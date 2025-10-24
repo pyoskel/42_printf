@@ -6,11 +6,16 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:24:04 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/23 06:24:30 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/10/23 22:23:59 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	handle_specifier(char specifier, va_list args)
+{
+
+}
 
 int	ft_printf(const char *input, ...)
 {
@@ -24,7 +29,7 @@ int	ft_printf(const char *input, ...)
 	while (input != '\0')
 	{
 		if (input[++i] == '%')
-			counter += handle_specifier(input[++1], args);
+			counter += handle_specifier(input[++i], args);
 		
 	}
 	
