@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:24:04 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/26 14:31:48 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/10/26 16:35:09 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	handle_specifier(char specifier, va_list args)
 	int	count;
 
 	if (specifier == 'c')
-		count = putchar(va_arg(args, int));
+		count = ft_putchar(va_arg(args, int));
 	else if (specifier == 's')
-		count = 
+		count = ft_putstr(va_arg(args, char *));
 	else if (specifier == 'p')
 		count = 
 	else if (specifier == 'd' || specifier == 'i')
