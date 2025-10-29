@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:24:04 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/26 16:37:26 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/10/29 03:43:47 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	handle_specifier(char specifier, va_list args)
 {
-	int	count;
+	int	counter;
 
 	if (specifier == 'c')
-		count = ft_putchar(va_arg(args, int));
+		counter = ft_putchar(va_arg(args, int));
 	else if (specifier == 's')
-		count = ft_putstr(va_arg(args, char *));
+		counter = ft_putstr(va_arg(args, char *));
 	else if (specifier == 'p')
-		count = ft_putptr(va_arg(args, void *), 0);
+		counter = ft_putptr(va_arg(args, void *), 0);
 	else if (specifier == 'd' || specifier == 'i')
-		count = 
+		counter = 
 	else if (specifier == 'u')
-		count = 
+		counter = 
 	else if (specifier == 'x' || specifier == 'X')
-		count = 
+		counter = 
 	else if (specifier == '%')
-		count = write(1, "%", 1);
-	return (count);
+		counter = write(1, "%", 1);
+	return (counter);
 }
 
 int	ft_printf(const char *input, ...)
@@ -42,12 +42,15 @@ int	ft_printf(const char *input, ...)
 	va_start(args, input);
 	i = -1;
 	counter = 0;
-	while (input != '\0')
+	while (input[++i] != '\0')
 	{
-		if (input[++i] == '%')
+		if (input[i] == '%')
 			counter += handle_specifier(input[++i], args);
-		
+		else
+		{
+			write(1, &input[i], 1);
+			counter++;
+		}
 	}
-	
 	return (va_end(args), counter);
 }
