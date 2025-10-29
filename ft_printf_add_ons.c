@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/26 16:52:01 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/10/29 04:19:14 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,44 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(char *str)
 {
 	int	i;
-	int	count;
+	int	counter;
 
 	i = -1;
-	count = 0;
+	counter = 0;
 	if (!str)
 		return (ft_putstr("(null)"));
 	while (str[++i] != '\0')
-		count += ft_putchar(str[i]);
-	return (count);
+		counter += ft_putchar(str[i]);
+	return (counter);
 }
 
 int	ft_putptr(void *ptr, int flag)
 {
 	unsigned long	address;
-	int				count;
+	int				counter;
 	char			hexadec;
 
 	address = (unsigned long)ptr;
-	count = 0;
+	counter = 0;
 	if (flag == 0)
 	{
 		if (!ptr)
 		{
-			count += (write(1, PTRNULL, PTRSIZE));
-			return (count);
+			counter += (write(1, PTRNULL, PTRSIZE));
+			return (counter);
 		}
-		count += write(1, "0x", 2);
+		counter += write(1, "0x", 2);
 	}
 	if (address >= 16)
-		count += ft_putptr((void *)(address / 16), 1);
+		counter += ft_putptr((void *)(address / 16), 1);
 	hexadec = HEXALOWER[address % 16];
-	count += write(1, &hexadec, 1);
-	return (count);
+	counter += write(1, &hexadec, 1);
+	return (counter);
 }
+
