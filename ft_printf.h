@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 02:30:02 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/29 02:21:48 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/10/30 05:03:32 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putptr(void *ptr, int flag);
 int	ft_putnbr(int nbr, unsigned int base);
+int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base);
 
 #endif
