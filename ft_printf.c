@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:24:04 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/29 04:18:01 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/10/29 23:55:42 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,21 @@ int	handle_specifier(char specifier, va_list args)
 	else if (specifier == 'd' || specifier == 'i')
 		counter = ft_putnbr(va_arg(args, int), 10);
 	else if (specifier == 'u')
-		counter = 
+		counter = ft_puthex_or_u(va_arg(args, unsigned int), specifier, 10);
 	else if (specifier == 'x' || specifier == 'X')
-		counter = 
+		counter = ft_puthex_or_u(va_arg(args, unsigned int), specifier, 16);
 	else if (specifier == '%')
 		counter = write(1, "%", 1);
+	else
+		return (-1);
 	return (counter);
 }
 
 int	ft_printf(const char *input, ...)
 {
+	va_list	args;
 	int		i;
 	int		counter;
-	va_list	args;
 
 	va_start(args, input);
 	i = -1;
@@ -47,10 +49,7 @@ int	ft_printf(const char *input, ...)
 		if (input[i] == '%')
 			counter += handle_specifier(input[++i], args);
 		else
-		{
-			write(1, &input[i], 1);
-			counter++;
-		}
+			counter += write(1, &input[i], 1);
 	}
 	return (va_end(args), counter);
 }
