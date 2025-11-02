@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/30 06:52:26 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/02 18:26:38 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,27 @@
 
 int	ft_putchar(char c)
 {
-	return (write(1, &c, 1));
+	int	counter;
+
+	counter = (write(1, &c, 1));
+	return (counter);
 }
 
 int	ft_putstr(char *str)
 {
 	int	i;
 	int	counter;
+	int	write_err;
 
 	i = -1;
 	counter = 0;
 	if (!str)
-		return (ft_putstr("(null)"));
+	{
+		write_err = ft_putstr("(null)");
+		if (write_err == -1)
+			return (-1);
+		return (write_err);
+	}
 	while (str[++i] != '\0')
 		counter += ft_putchar(str[i]);
 	return (counter);
@@ -98,9 +107,33 @@ int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
 
 // int main(void) // ft_putstr
 // {
-// 	printf("hallo %s!\n", "world");
-// 	ft_printf("hallo %s!\n", "world");
+// 	int count;
+
+// 	count = ft_printf ("Test: %s | counter: %d\n","NULL", count);
+// 	printf ("Original: %s | counter: %d\n", "NULL", count);
+// 	// printf("hallo %s!\n", "world");
+// 	// ft_printf("hallo %s!\n", "world");
 // 	return (0);
+// }
+
+// int main(void) // ft_putstr mit NULL testen
+// {
+//     int count_null;
+//     char *null_ptr = NULL; // Definiert einen echten Null-Pointer
+
+//     ft_printf("--- Test: %%s mit NULL ---\n");
+
+//     // Testen der ft_printf Funktion
+//     // Sie sollte "ft_printf (null)" ausgeben.
+//     // Gedruckte Zeichen: "ft_printf " (10) + "(null)" (6) = 16
+//     count_null = ft_printf("%s", null_ptr); 
+//     ft_printf(" | ft_printf Return-Wert: %d\n", count_null);
+    
+//     // Vergleich mit dem Standard-printf (optional)
+//     int std_count_null = printf("%s", null_ptr);
+//     printf(" | Original printf Return-Wert: %d\n", std_count_null);
+    
+//     return (0);
 // }
 
 // int main(void) // ft_putptr
