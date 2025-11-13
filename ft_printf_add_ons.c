@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/07 22:31:58 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:16:00 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	int	i;
 	int	counter;
 
-	i = 0;
 	counter = 0;
 	if (!str)
 	{
@@ -34,11 +32,11 @@ int	ft_putstr(char *str)
 			return (-1);
 		return (counter);
 	}
-	while (str[i] != '\0')
+	while (str[counter] != '\0')
 	{
-		if (write(1, &str[i], 1) == -1)
+		if (write(1, &str[counter], 1) == -1)
 			return (-1);
-		i++;
+		counter++;
 	}
 	return (counter);
 }
@@ -102,9 +100,11 @@ int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
 
 // int main(void) // ft_putchar
 // {
-// 	ft_printf("%c\n", '9');
-// 	printf("%c\n", '9');
-// 	ft_putchar('9');
+// 	ft_printf(" %c %c %c \n", '0', 0, '1');
+// 	ft_printf("%c %c \n", '1', '2');
+// 	// printf("%c\n", '9');
+// 	// ft_putchar('9');
+// 	// printf("\n");
 // 	return (0);
 // }
 
