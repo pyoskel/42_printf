@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:24:04 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/10/29 23:55:42 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/13 21:10:15 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,11 @@ int	ft_printf(const char *input, ...)
 		if (input[i] == '%')
 			counter += handle_specifier(input[++i], args);
 		else
+		{
 			counter += write(1, &input[i], 1);
+			if (counter == -1)
+				return (-1);
+		}
 	}
 	return (va_end(args), counter);
 }
