@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 01:24:04 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/13 21:10:15 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/18 20:56:22 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_printf(const char *input, ...)
 	va_list	args;
 	int		i;
 	int		counter;
+	int		write_check;
 
 	va_start(args, input);
 	i = -1;
@@ -47,12 +48,17 @@ int	ft_printf(const char *input, ...)
 	while (input[++i] != '\0')
 	{
 		if (input[i] == '%')
-			counter += handle_specifier(input[++i], args);
+		{
+			write_check = handle_specifier(input[++i], args);
+			if (write_check == -1)
+				return (-1);
+			counter += write_check;
+		}
 		else
 		{
-			counter += write(1, &input[i], 1);
-			if (counter == -1)
+			if (write(1, &input[i], 1) == -1)
 				return (-1);
+			counter++;
 		}
 	}
 	return (va_end(args), counter);
