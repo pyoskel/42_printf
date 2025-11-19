@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/19 20:34:47 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/19 21:27:30 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,28 @@ int	ft_putptr(void *ptr, int flag)
 {
 	unsigned long	address;
 	int				counter;
-	char			hexadec;
+	char			temp;
 
 	address = (unsigned long)ptr;
 	counter = 0;
 	if (flag == 0)
 	{
 		if (!ptr)
-			return (counter += write(1, PTRNULL, PTRSIZE));
-		counter += write(1, "0x", 2);
+			return (write(1, PTRNULL, PTRSIZE));
+		if (write(1, "0x", 2) == -1)
+			return (-1);
+		counter += 2;
 	}
 	if (address >= 16)
-		counter += ft_putptr((void *)(address / 16), 1);
-	hexadec = HEXALOWER[address % 16];
-	counter += write(1, &hexadec, 1);
-	return (counter);
+	{
+		temp = ft_putptr((void *)(address / 16), 1);
+		if (temp == -1)
+			return (-1);
+		counter += temp;
+	}
+	if (write(1, &HEXALOWER[address % 16], 1) == -1)
+		return (-1);
+	return (counter + 1);
 }
 
 int	ft_putnbr(int nbr, unsigned int base)
