@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/13 21:16:00 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/19 20:34:47 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,15 @@ int	ft_putchar(char c)
 int	ft_putstr(char *str)
 {
 	int	counter;
+	int	write_check;
 
-	counter = 0;
 	if (!str)
-	{
-		counter = ft_putstr("(null)");
-		if (counter == -1)
-			return (-1);
-		return (counter);
-	}
+		return (ft_putstr("(null)"));
+	counter = 0;
 	while (str[counter] != '\0')
 	{
-		if (write(1, &str[counter], 1) == -1)
+		write_check = write(1, &str[counter], 1);
+		if (write_check == -1)
 			return (-1);
 		counter++;
 	}
@@ -110,12 +107,17 @@ int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
 
 // int main(void) // ft_putstr
 // {
-// 	int count;
+// 	// int count = 0;
 
-// 	count = ft_printf ("Test: %s | counter: %d\n","NULL", count);
-// 	printf ("Original: %s | counter: %d\n", "NULL", count);
-// 	// printf("hallo %s!\n", "world");
-// 	// ft_printf("hallo %s!\n", "world");
+// 	// // Hier übergeben wir den echten NULL-Zeiger (0x0)
+//     // // ft_printf sieht: str ist 0 -> springt in dein if (!str)
+//     // count = ft_printf("%s", NULL);
+//     // printf("\nMy-Return-Wert: %d\n", count);
+//     // count = printf("%s", (char *)NULL);
+//     // printf("\nprintf-Return-Wert: %d\n", count);
+
+// 	printf("hallo %s!\n", "world");
+// 	ft_printf("hallo %s!\n", "world");
 // 	return (0);
 // }
 
