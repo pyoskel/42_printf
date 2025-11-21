@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/21 19:47:12 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/22 00:43:48 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,28 @@ int	ft_putptr(void *ptr, int flag)
 int	ft_putnbr(int nbr, unsigned int base)
 {
 	int		counter;
-	char	for_dec;
+	int		temp;
 
 	counter = 0;
 	if (nbr == INT_MIN)
-		return (counter += write(1, "-2147483648", 11));
+		return (write(1, "-2147483648", 11));
 	if (nbr < 0)
 	{
-		counter += write(1, "-", 1);
+		if (write(1, "-", 1) == -1)
+			return (-1);
+		counter ++;
 		nbr = -nbr;
 	}
 	if (nbr >= (int)base)
-		counter += ft_putnbr(nbr / base, base);
-	for_dec = BASE10[nbr % base];
-	counter += write(1, &for_dec, 1);
-	return (counter);
+	{
+		temp = ft_putnbr(nbr / base, base);
+		if (temp == -1)
+			return (-1);
+		counter += temp;
+	}
+	if (write(1, &BASE10[nbr % base], 1) == -1)
+		return (-1);
+	return (counter + 1);
 }
 
 int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
