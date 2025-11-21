@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/19 21:27:30 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/21 19:47:12 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_putptr(void *ptr, int flag)
 {
 	unsigned long	address;
 	int				counter;
-	char			temp;
+	int				temp;
 
 	address = (unsigned long)ptr;
 	counter = 0;
