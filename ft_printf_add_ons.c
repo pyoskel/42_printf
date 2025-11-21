@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/22 00:43:48 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/11/22 00:55:19 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
 {
 	int		counter;
 	char	hexadec;
+	int		temp;
 
 	counter = 0;
 	if (nbr >= base)
@@ -105,7 +106,10 @@ int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
 		hexadec = HEXAUPPER[nbr % base];
 	else
 		hexadec = HEXALOWER[nbr % base];
-	counter += write(1, &hexadec, 1);
+	temp = write(1, &hexadec, 1);
+	if (temp == -1)
+		return (-1);
+	counter += temp;
 	return (counter);
 }
 
