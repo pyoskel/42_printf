@@ -1,0 +1,56 @@
+# General for C / Make projects
+*.o
+*.lo
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+a.out
+*.out
+
+# Build / temporary directories
+build/
+bin/
+obj/
+dist/
+tmp/
+cmake-build-*/
+
+# Makefile / editor backups
+*~
+*.swp
+*.swo
+*.swn
+*.tmp
+
+# Vim/Emacs swap/backup
+.*.swp
+.#*
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Logs / coverage / debug
+*.log
+coverage/
+lcov-report/
+core
+
+# Environment / secrets
+.env
+.env.local
+
+# CTags, tags, compiled helpers
+tags
+ctags.out
+
+# Other (local, per-user) files
+*.local
+*.user
