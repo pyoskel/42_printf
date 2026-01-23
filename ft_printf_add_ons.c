@@ -6,7 +6,7 @@
 /*   By: pabartoc <pabartoc@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 10:19:52 by pabartoc          #+#    #+#             */
-/*   Updated: 2025/11/22 00:55:19 by pabartoc         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:58:50 by pabartoc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ int	ft_puthex_or_u(unsigned int nbr, char c, unsigned int base)
 
 // int main(void) // ft_putchar
 // {
-// 	ft_printf(" %c %c %c \n", '0', 0, '1');
-// 	ft_printf("%c %c \n", '1', '2');
-// 	// printf("%c\n", '9');
-// 	// ft_putchar('9');
+// 	// ft_printf(" %c %c %c \n", '0', 0, '1');
+// 	// ft_printf("%c %c \n", '1', '2');
 // 	// printf("\n");
+// 	int i = ft_printf("%c %c  abc", 'A', 'B');
+// 	printf("\n%d\n", i);
 // 	return (0);
 // }
 
